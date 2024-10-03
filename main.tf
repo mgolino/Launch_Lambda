@@ -6,6 +6,6 @@ resource "aws_lambda_function" "example" {
 
   source_code_hash = filebase64sha256("lambda_function_payload.zip")
 
-  runtime = "nodejs14.x"  # Change this to your desired runtime
+  runtime = "python3.12"
   # Other configurations like memory size, timeout, etc., can be added here
 }
