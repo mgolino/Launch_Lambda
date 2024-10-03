@@ -42,7 +42,7 @@ resource "aws_lambda_function" "lambda" {
     handler = "lambda_handler"
 
     vpc_config {
-        subnet_ids = [aws_subnet.subnet-0e10efe028772a50d.id]
-        security_group_ids = [aws_default_security_group.sg-0f54cfef2abad9ffe.id]
+        subnet_id = "subnet-0e10efe028772a50d.id"
+        security_group_id = "sg-0f54cfef2abad9ffe.id"
     }
 }
