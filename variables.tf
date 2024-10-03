@@ -3,7 +3,7 @@ variable "subnet_ids" {
 }
 
 variable "security_group_ids" {
- default = "sg-0f54cfef2abad9ffe"
+ default = "sg-06f198cb0274147b0"
 }
 
 /*variable "vpc_id" {
