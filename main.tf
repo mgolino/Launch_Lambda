@@ -22,6 +22,14 @@ data "archive_file" "lambda" {
     output_path = "lambda_function_src.zip"
 }
 
+resource "aws_vpc" "vpc-0f5ebef494a1a8c30" {
+  cidr_block = "172.31.0.0/16"
+}
+
+resource "aws_subnet" "subnet-0e10efe028772a50d" {
+  vpc_id     = aws_vpc.vpc-0f5ebef494a1a8c30.id
+  cidr_block = "172.31.16.0/20"
+}
 resource "aws_lambda_function" "lambda" {
     filename = "lambda_function_src.zip"
     function_name = "python_terraform_lambda"
