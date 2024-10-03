@@ -18,7 +18,7 @@ resource "aws_iam_role" "iam_for_lambda" {
 
 data "archive_file" "lambda" {
     type = "zip"
-    source file = "${path.module}/../lambda.py"
+    source file = "lambda.py"
     output_path = "lambda_function_src.zip"
 }
 
