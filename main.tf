@@ -30,7 +30,13 @@ resource "aws_subnet" "SUBNETVPC" {
   vpc_id     = aws_vpc.VPCMPG.id
   cidr_block = "172.31.16.0/20"
 }*/
-        
+
+variable "vpc_id" {}
+
+data "aws_vpc" "selected" {
+  id = var.vpc_id
+}
+
 resource "aws_lambda_function" "lambda" {
     filename = "lambda_function_src.zip"
     function_name = "python_terraform_lambda"
@@ -41,7 +47,7 @@ resource "aws_lambda_function" "lambda" {
     handler = "lambda_handler"
 
    vpc_config {
-    vpc_id = ["${var.vpc_id}"]
+    vpc_id = data.aws_vpc.selected.id
     subnet_ids = ["${var.subnet_ids}"]
     security_group_ids = ["${var.security_group_ids}"]
 #        subnet_ids = "subnet-0e10efe028772a50d.id"
