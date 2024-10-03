@@ -1,24 +1,11 @@
-data "aws_ami" "app_ami" {
-  most_recent = true
+resource "aws_lambda_function" "example" {
+  # filename      = "lambda_function_payload.zip"  # Your Lambda function code
+  function_name = "MyLambdaFunction"
+  role          = aws_iam_role.lambda_role.arn
+  handler       = "exports.handler"  # This depends on your runtime
 
-  filter {
-    name   = "name"
-    values = ["bitnami-tomcat-*-x86_64-hvm-ebs-nami"]
-  }
+  source_code_hash = filebase64sha256("lambda_function_payload.zip")
 
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["979382823631"] # Bitnami
-}
-
-resource "aws_instance" "MPGweb" {
-  ami           = data.aws_ami.app_ami.id
-  instance_type = var.instance_type
-
-  tags = {
-    Name = "HelloWorld"
-  }
+  runtime = "nodejs14.x"  # Change this to your desired runtime
+  # Other configurations like memory size, timeout, etc., can be added here
 }
