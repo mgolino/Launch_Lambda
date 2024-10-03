@@ -22,12 +22,12 @@ data "archive_file" "lambda" {
     output_path = "lambda_function_src.zip"
 }
 
-resource "aws_vpc" "vpc-0f5ebef494a1a8c30" {
+resource "aws_vpc" "VPCMPG" {
   cidr_block = "172.31.0.0/16"
 }
 
-resource "aws_subnet" "subnet-0e10efe028772a50d" {
-  vpc_id     = aws_vpc.vpc-0f5ebef494a1a8c30.id
+resource "aws_subnet" "SUBNETVPC" {
+  vpc_id     = aws_vpc.VPCMPG.id
   cidr_block = "172.31.16.0/20"
 }
 resource "aws_lambda_function" "lambda" {
