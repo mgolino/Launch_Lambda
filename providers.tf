@@ -8,5 +8,4 @@ terraform {
 
 provider "aws" {
   region  = "us-west-1"
-  aws_vpc = "vpc-0f5ebef494a1a8c30"
 }
