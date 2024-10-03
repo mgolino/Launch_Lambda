@@ -18,7 +18,7 @@ resource "aws_iam_role" "lambda_role" {
 resource "aws_lambda_function" "example" {
   # filename      = "lambda_function_payload.zip"  # Your Lambda function code
   function_name = "MyLambdaFunction"
-  role          = aws_iam_role.Lambda-Role-MPG.arn
+  role          = aws_iam_role.lambda_role.arn
   handler       = "lambda_handler"
 
   # source_code_hash = filebase64sha256("lambda_function_payload.zip")
