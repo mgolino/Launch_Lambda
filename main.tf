@@ -190,8 +190,8 @@ resource "aws_lambda_function" "lambda_function" {
   filename                = data.archive_file.lambda.output_path
   function_name           = "${var.project}-lambda-function"
   role                    = aws_iam_role.iam_role.arn
-  handler                 = "index.handler"
-  runtime                 = "nodejs14.x"
+  runtime = "python3.10"
+  handler = "lambda_handler"
   source_code_hash        = filebase64sha256(data.archive_file.lambda.output_path)
   vpc_config {
     subnet_ids         = [aws_subnet.subnet_public.id, aws_subnet.subnet_private.id]
