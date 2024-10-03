@@ -32,7 +32,7 @@ resource "aws_subnet" "SUBNETVPC" {
 }*/
 
 data "aws_vpc" "lookup" {
-    tag = {
+    tags = {
       name = var.vpc_name
     }
 }
