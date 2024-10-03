@@ -35,14 +35,16 @@ resource "aws_lambda_function" "lambda" {
     filename = "lambda_function_src.zip"
     function_name = "python_terraform_lambda"
     role = aws_iam_role.iam_for_lambda.arn
+    subnet_id = "subnet-0e10efe028772a50d.id"
+    security_group_id = "sg-0f54cfef2abad9ffe.id"
 
     source_code_hash = data.archive_file.lambda.output_base64sha256
 
     runtime = "python3.10"
     handler = "lambda_handler"
 
-    vpc_config {
+   /* vpc_config {
         subnet_id = "subnet-0e10efe028772a50d.id"
         security_group_id = "sg-0f54cfef2abad9ffe.id"
-    }
+    }*/
 }
