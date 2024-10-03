@@ -30,12 +30,6 @@ resource "aws_subnet" "SUBNETVPC" {
   vpc_id     = aws_vpc.VPCMPG.id
   cidr_block = "172.31.16.0/20"
 }*/
-
-data "aws_vpc" "lookup" {
-    tags = {
-      name = var.vpc_name
-    }
-}
         
 resource "aws_lambda_function" "lambda" {
     filename = "lambda_function_src.zip"
