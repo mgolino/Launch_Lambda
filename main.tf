@@ -22,14 +22,15 @@ data "archive_file" "lambda" {
     output_path = "lambda_function_src.zip"
 }
 
-resource "aws_vpc" "VPCMPG" {
+/* resource "aws_vpc" "VPCMPG" {
   cidr_block = "172.31.0.0/16"
 }
 
 resource "aws_subnet" "SUBNETVPC" {
   vpc_id     = aws_vpc.VPCMPG.id
   cidr_block = "172.31.16.0/20"
-}
+}*/
+
 resource "aws_lambda_function" "lambda" {
     filename = "lambda_function_src.zip"
     function_name = "python_terraform_lambda"
@@ -39,4 +40,8 @@ resource "aws_lambda_function" "lambda" {
 
     runtime = "python3.10"
     handler = "lambda_handler"
+
+    vpc_config {
+        subnet_ids = [aws_subnet.subnet-0e10efe028772a50d.id]
+        security_group_ids = [aws_default_security_group.sg-0f54cfef2abad9ffe.id]
 }
