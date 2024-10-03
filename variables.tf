@@ -6,7 +6,9 @@ variable "security_group_ids" {
  default = "sg-0f54cfef2abad9ffe"
 }
 
-
+variable "vpc_id" {
+default = "vpc-0f5ebef494a1a8c30"
+}
 
 
 /* variable "instance_type" {
