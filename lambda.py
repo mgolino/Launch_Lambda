@@ -16,9 +16,16 @@ def lambda_handler(event, context):
                 instance_exists = True
                 instance_id = instance.id
                 ec2.Instance(instance_id).stop()
-                print(f"An instance named '{instance_id}' is .")
+                print(f"An instance named '{instance_id}' has been stopped .")
 #                break
 #            if instance_exists:
 #                break
     
 #   print(f" {instance_id}")
+
+
+
+    return {
+        'statusCode': 200,
+        'body': json.dumps('EC2 stop script')
+    }
