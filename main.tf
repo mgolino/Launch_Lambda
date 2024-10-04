@@ -45,11 +45,11 @@ resource "aws_lambda_function" "lambda" {
     runtime = "python3.12"
     handler = "lambda_function.lambda_handler"
 
-   vpc_config {
+/*   vpc_config {
  #   vpc_id = data.aws_vpc.selected.id
     subnet_ids = ["${var.subnet_ids}"]
     security_group_ids = ["${var.security_group_ids}"]
 #        subnet_ids = "subnet-0e10efe028772a50d.id"
 #        security_group_ids = "sg-0f54cfef2abad9ffe.id"
-    }
+    }*/
 }
