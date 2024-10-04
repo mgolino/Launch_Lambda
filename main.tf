@@ -43,7 +43,7 @@ resource "aws_lambda_function" "lambda" {
     source_code_hash = data.archive_file.lambda.output_base64sha256
 
     runtime = "python3.12"
-    handler = "lambda_function.lambda_handler"
+#    handler = "lambda_function.lambda_handler"
 
    vpc_config {
  #   vpc_id = data.aws_vpc.selected.id
