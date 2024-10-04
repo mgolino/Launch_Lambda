@@ -24,7 +24,7 @@ resource "aws_iam_role_policy_attachment" "attach_role" {
 data "archive_file" "lambda" {
     type = "zip"
     source_file = "lambda.py"
-    output_path = "lambda_function_src.zip"
+    output_path = "lambda_function.zip"
 }
 
 /* resource "aws_vpc" "VPCMPG" {
